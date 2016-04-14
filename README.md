@@ -1,5 +1,7 @@
 # Developing a RESTful MEAN App
 
+[![Build Status](https://travis-ci.org/mjhea0/mean-app-tdd.svg?branch=master)](https://travis-ci.org/mjhea0/mean-app-tdd)
+
 Let's build a full-stack RESTful MEAN app, utilizing TDD.
 
 ## Server
@@ -76,6 +78,8 @@ TDD. Red. Green. Refactor. We're writing integration tests. Why? How do you know
 Follow this process for all the CRUD routes, making sure to return appropriate JSON responses.
 
 ## Client
+
+Need to update ...
 
 ### Project Setup
 
