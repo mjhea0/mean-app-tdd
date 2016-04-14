@@ -77,8 +77,6 @@ Follow this process for all the CRUD routes, making sure to return appropriate J
 
 ## Client
 
-All you Wes...
-
 ### Project Setup
 
 - Add Angular
