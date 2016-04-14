@@ -1,13 +1,19 @@
 language: node_js
-
 node_js:
-  - "5"
-  - "4.1"
-  - "4.0"
-  - '0.12'
-  - '0.11'
-
+- '5'
+- '4.1'
+- '4.0'
+- '0.12'
+- '0.11'
 services: mongodb
-
 before_script:
-  - npm install -g mocha
+- npm install -g mocha
+deploy:
+  provider: heroku
+  api_key:
+    secure: MiiBwrnMo2Gj3+ANDKIJ2eZ7dbSY3F28mpRtJdYXbSGdeDgIAy4zrJ8Rcn0YBrgPWFq2nO2gRVVLVDqObsnbDQpoG3Ps5Whx4sxW9mMk6Dq9vzajil4GvRlV1B8yNuCuYK5VybpucdP131g56lA0Cs0U/SGd0JnY2y4xNLxE/9qwy+8BKrpOHjTlDz0c+dLruAVmNYiqLbfUuV+x44xZqmhxb/yTG5XRWuNkfkssS3yZvuMLVpYiB4vVLJvfQkjmUW+kiJJCE4ANhpzvH0obH7KaRyOD8yctiwSwRav1fqHtPKb4cWl3gzDIlCXVuX7vNFOLnq+2/U0kl0W9howiD/P83VF5SlXf2nS3bpCNR4qwNEL0960QXRY3Wd9oyWuReGk1KW40CxomJdQ4oQ6eF7okX7RFRaVUhzXT3Am4RM0fq91yUxN81TPCELRh7n22UhjSfG4thqdubL1UNjK5S783pbbcDFODqeaIHEVw/eyDFM9/469PeUm5Z0a1jPCxzieDfEIfGjnd/uILwJp5js1TBWIwBMhCrmRCxNebCmEIZTnWQQoHc9VF9DUJik8gMqrBomODO+sFzU1DAv9pwDz2xdnafJstHUGVHRuVZmi9Gg7j8ogKTUwCsAPsDoET33QR50JO7iZSDgAY3pMI1uHHKPYwtOS2bjd1QQPQyYQ=
+  app: mean-herman
+  on:
+    branch: master
+    node: '5'
+    repo: mjhea0/mean-app-tdd
