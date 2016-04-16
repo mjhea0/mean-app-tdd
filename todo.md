@@ -1,6 +1,5 @@
 # To do
 
-1. Refactor out `$window.location.reload();`
 1. Refactor jQuery modal
 1. Add promises to Mongoose
 1. Update student model to include:

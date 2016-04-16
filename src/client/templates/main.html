@@ -1,0 +1,56 @@
+<!-- add student -->
+<div class="col-md-3 verticalLine" ng-controller="addStudentController">
+  <h3>Add New Student</h3>
+  <br>
+  <form class="form" ng-submit="addStudent()">
+    <div class="form-group">
+      <label>First Name</label>
+      <input ng-model="student.firstName" class="form-control" type="text" required>
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input ng-model="student.lastName" class="form-control" type="text" required>
+    </div>
+    <div class="form-group">
+      <label>Year</label>
+      <select class="form-control" ng-model="student.year">
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+        <option value="2010">2010</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Add Student</button>
+  </form>
+</div>
+<!-- all students -->
+<div class="col-md-9" ng-controller="allStudentController">
+  <h3>All Students</h3>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="student in allStudents">
+        <td>{{student.firstName}}</td>
+        <td>{{student.lastName}}</td>
+        <td>{{student.year}}</td>
+        <td>
+          <span ng-controller="editStudentController"><button class="btn btn-xs btn-warning" ng-click="toggleModal()">Edit</button>
+          </span>
+          <span ng-controller="removeStudentController"><button class="btn btn-xs btn-danger" ng-click="removeStudent(student)">Remove</button></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
