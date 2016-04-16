@@ -33,12 +33,6 @@ mongoose.connect(mongoURI, function(err, res) {
 });
 
 
-// *** view engine *** //
-// var swig = new swig.Swig();
-// app.engine('html', swig.renderFile);
-// app.set('view engine', 'html');
-
-
 // *** static directory *** //
 app.set('views', path.join(__dirname, 'views'));
 
