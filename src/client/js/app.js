@@ -23,8 +23,9 @@ app.config(function($routeProvider, $httpProvider) {
     restricted: false,
     preventLoggedIn: false,
     resolve: {
-      test: function(authService, $location) {
+      test: function(authService, $rootScope, $location) {
         authService.logout();
+        $rootScope.currentUser = authService.getUserInfo();
         $location.path('/login');
       }
     }

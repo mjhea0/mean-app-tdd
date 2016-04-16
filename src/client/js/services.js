@@ -1,4 +1,4 @@
-app.service('studentDataService', ['crudService', function(crudService) {
+app.service('studentDataService', ['$rootScope', 'crudService', function($rootScope, crudService) {
 
   return {
     getAllStudents: function() {
@@ -100,7 +100,7 @@ app.service('authService', ['$http', '$window', function($http, $window) {
       $window.localStorage.setItem('token', JSON.stringify(userData.data.data.token));
     },
     getUserInfo: function(userData) {
-      $window.localStorage.getItem('user');
+      return $window.localStorage.getItem('user');
     },
   };
 }]);
