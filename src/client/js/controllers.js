@@ -35,15 +35,15 @@ app.controller('removeStudentController', ['$scope', '$window', 'studentDataServ
 app.controller('editStudentController', ['$scope', '$window', 'studentDataService',
   function($scope, $window, studentDataService) {
 
-  $scope.showModal = false;
+  $scope.show = false;
 
-  $scope.toggleModal = function(){
-    $scope.showModal = !$scope.showModal;
+  $scope.makeEditable = function () {
+    this.show = true;
   };
 
   $scope.editStudent = function(student) {
     studentDataService.editStudent(student);
-    $scope.showModal = false;
+    this.show = false;
     $window.location.reload(); // refactor!
   };
 

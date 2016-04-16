@@ -1,6 +1,6 @@
 <!-- add student -->
 <div class="col-md-3 verticalLine" ng-controller="addStudentController">
-  <h3>Add New Student</h3>
+  <h2>Add New Student</h2>
   <br>
   <form class="form" ng-submit="addStudent()">
     <div class="form-group">
@@ -13,22 +13,14 @@
     </div>
     <div class="form-group">
       <label>Year</label>
-      <select class="form-control" ng-model="student.year">
-        <option value="2016">2016</option>
-        <option value="2015">2015</option>
-        <option value="2014">2014</option>
-        <option value="2013">2013</option>
-        <option value="2012">2012</option>
-        <option value="2011">2011</option>
-        <option value="2010">2010</option>
-      </select>
+      <input ng-model="student.year" class="form-control" type="number" min="1960" max="2016" step="1" required>
     </div>
     <button type="submit" class="btn btn-success">Add Student</button>
   </form>
 </div>
 <!-- all students -->
-<div class="col-md-9" ng-controller="allStudentController">
-  <h3>All Students</h3>
+<div class="col-md-7" ng-controller="allStudentController">
+  <h2>All Students</h2>
   <br>
   <table class="table table-hover">
     <thead>
@@ -39,14 +31,15 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody ng-controller="editStudentController">
       <tr ng-repeat="student in allStudents">
-        <td>{{student.firstName}}</td>
-        <td>{{student.lastName}}</td>
-        <td>{{student.year}}</td>
+        <td ng-class="{'editable': show}" contenteditable="{{show}}" ng-model="student.firstName">{{student.firstName}}</td>
+        <td ng-class="{'editable': show}" contenteditable="{{show}}" ng-model="student.lastName">{{ student.lastName }}</td>
+        <td ng-class="{'editable': show}"contenteditable="{{show}}" ng-model="student.year">{{ student.year }}</td>
         <td>
-          <span ng-controller="editStudentController"><button class="btn btn-xs btn-warning" ng-click="toggleModal()">Edit</button>
+          <span><button class="btn btn-xs btn-warning" ng-show="!show" ng-click="makeEditable()">Edit</button>
           </span>
+          <span><button class="btn btn-xs btn-success" ng-show="show" ng-click="editStudent(student)">Save</button>
           <span ng-controller="removeStudentController"><button class="btn btn-xs btn-danger" ng-click="removeStudent(student)">Remove</button></span>
         </td>
       </tr>

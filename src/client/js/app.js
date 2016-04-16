@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'ngSanitize']);
 
 app.config(function($routeProvider, $httpProvider) {
   $routeProvider
@@ -35,11 +35,11 @@ app.config(function($routeProvider, $httpProvider) {
 
 app.run(function($rootScope, $location, $window, authService) {
   $rootScope.$on('$routeChangeStart', function(event, next, current) {
-    // if restricted and no token
+    // if route us restricted and no token is present
     if(next.restricted && !$window.localStorage.getItem('token')) {
       $location.path('/login');
     }
-    // if token and prevent logging in
+    // if token and prevent logging in is true
     if(next.preventLoggedIn && $window.localStorage.getItem('token')) {
       $location.path('/');
     }
