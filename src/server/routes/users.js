@@ -9,55 +9,53 @@ var config = require('../../_config');
 
 router.post('/register', function(req, res, next) {
   // ensure user does not already exist
-  User.findOne({email: req.body.email}, function(err, existingUser) {
-    if(err) {
-      return next(err);
-    }
-    if(existingUser) {
+  User.findOne({email: req.body.email})
+  .then(function (existingUser) {
+    if (existingUser) {
       return res.status(409).json({
         status: 'fail',
         message: 'Email already exists'
       });
     }
-    // create a new user
-    var user = new User(req.body);
-    user.save(function(){
+    // create new user
+    var newUser = new User (req.body);
+    newUser.save(function () {
       // create token
-      var token = generateToken(user);
+      var token = generateToken(newUser);
       res.status(200).json({
         status: 'success',
         data: {
           token: token,
-          user: user.email
+          user: newUser.email
         }
       });
     });
+  })
+  .catch(function (err) {
+    return next(err);
   });
 });
 
-router.post('/login', function(req, res, next) {
-  // ensure the user exists
-  User.findOne({email: req.body.email}, function(err, user) {
-    if(err) {
-      return next(err);
-    }
-    if(!user) {
+router.post('/login', function (req, res, next) {
+  // ensure that user exists
+  User.findOne({email: req.body.email})
+  .then(function (user) {
+    if (!user) {
       return res.status(401).json({
         status: 'fail',
-        message: 'Email does not exist.'
+        message: 'Email does not exist'
       });
-    }
-    // compare the plain text password with the hashed/salted password
-    user.comparePassword(req.body.password, function(err, match){
-      if(err) {
-        return next(err);
-      }
-      if(!match) {
-        return res.status(401).json({
-          status: 'fail',
-          message: 'Password is not correct.'
-        });
-      }
+    } else
+      user.comparePassword(req.body.password, function (err, match) {
+        if (err) {
+          return next(err);
+        }
+        if (!match) {
+          return res.status(401).json({
+            status: 'fail',
+            message: 'Password is not correct'
+          });
+        }
       user = user.toObject();
       // delete user.password;
       var token = generateToken(user);
@@ -69,6 +67,9 @@ router.post('/login', function(req, res, next) {
         }
       });
     });
+  })
+  .catch(function (err) {
+    return next(err);
   });
 });
 

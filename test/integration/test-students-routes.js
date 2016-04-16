@@ -48,7 +48,8 @@ describe('student routes', function() {
 
   describe('/GET students/:id', function() {
     it('should return a single student', function(done) {
-      Student.findOne(function(err, student) {
+      Student.findOne()
+      .then(function(student) {
         var studentID = student._id;
         chai.request(server)
         .get('/students/'+studentID)
@@ -96,7 +97,8 @@ describe('student routes', function() {
 
   describe('/PUT students/:id', function() {
     it('should return a single student', function(done) {
-      Student.findOne(function(err, student) {
+      Student.findOne()
+      .then(function(student) {
         var studentID = student._id;
         chai.request(server)
         .put('/students/'+studentID)
@@ -120,7 +122,8 @@ describe('student routes', function() {
 
   describe('/DELETE students/:id', function() {
     it('should delete a student', function(done) {
-      Student.findOne(function(err, student) {
+      Student.findOne()
+      .then(function(student) {
         var studentID = student._id;
         chai.request(server)
         .delete('/students/'+studentID)

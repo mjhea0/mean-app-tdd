@@ -10,7 +10,8 @@ var data = [
 
 function runSeed(done) {
   var student = new Student(data[0]);
-  student.save(function() {
+  student.save()
+  .then(function(){
     done();
   });
 }
