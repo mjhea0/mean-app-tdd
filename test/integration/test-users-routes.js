@@ -42,8 +42,7 @@ describe('student routes', function() {
         res.body.status.should.equal('success');
         res.body.data.should.be.a('object');
         res.body.data.token.should.be.a('string');
-        res.body.data.user.email.should.equal('michael@herman.com');
-        res.body.data.user.admin.should.equal(false);
+        res.body.data.user.should.equal('michael@herman.com');
         done();
       });
     });
@@ -66,8 +65,7 @@ describe('student routes', function() {
         res.body.status.should.equal('success');
         res.body.data.should.be.a('object');
         res.body.data.token.should.be.a('string');
-        res.body.data.user.email.should.equal('michael@herman.com');
-        res.body.data.user.admin.should.equal(false);
+        res.body.data.user.should.equal('michael@herman.com');
         done();
       });
     });
