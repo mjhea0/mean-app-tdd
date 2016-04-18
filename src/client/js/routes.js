@@ -46,7 +46,7 @@
 
   function routeChange($rootScope, $location, $window, authService) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
-      // if route us restricted and no token is present
+      // if route is restricted and no token is present
       if(next.restricted && !$window.localStorage.getItem('token')) {
         $location.path('/login');
       }
